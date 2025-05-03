@@ -15,7 +15,8 @@ st.set_page_config(
 )
 
 #====================Principal====================
-def main():
+def main() -> None:
+
     #Configurações
     df = load_data("data\\system_extraction.xlsx")
     st.title(":bar_chart: Dashboard de Vendas")
@@ -27,7 +28,6 @@ def main():
     column4, column5 = st.columns([3.5,4.5])
 
     #Organização de Layout
-
     with column0:
         bar_graph(df_filtered, "Cliente", "Valor Pedido")
     with column1:

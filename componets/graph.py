@@ -20,8 +20,13 @@ def bar_graph(dataframe: pd.DataFrame, set_x: str | None = None, set_y:str |
             color=[color_bar]
         )
         return bar
-    except Exception:
-        raise Exception("Valores faltantes ou Coluna não identificada.")
+
+    except KeyError as e:
+        raise KeyError(f"Erro ao acessar coluna no DataFrame: {e}")
+    except ValueError as e:
+        raise ValueError(f"Erro de valor: {e}")
+    except Exception as e:
+        raise RuntimeError(f"Erro ao criar {e}")
 
 #Gráfico de Linha
 def line_graph(dataframe: pd.DataFrame, nominal: str | None = None, quantitative_one: str |
@@ -55,8 +60,12 @@ def line_graph(dataframe: pd.DataFrame, nominal: str | None = None, quantitative
             )
             return line
 
-    except Exception:
-        raise Exception("Valores faltantes ou Coluna não identificada.")
+    except KeyError as e:
+        raise KeyError(f"Erro ao acessar coluna no DataFrame: {e}")
+    except ValueError as e:
+        raise ValueError(f"Erro de valor: {e}")
+    except Exception as e:
+        raise RuntimeError(f"Erro ao criar {e}")
 
 #Gráfico de Pizza
 def arc_graph(dataframe: pd.DataFrame, nominal: str | None = None, quantitative: str |
@@ -75,5 +84,9 @@ def arc_graph(dataframe: pd.DataFrame, nominal: str | None = None, quantitative:
         )
         return st.altair_chart(chart_arc)
 
-    except Exception:
-        raise Exception("Valores faltantes ou Coluna não identificada.")
+    except KeyError as e:
+        raise KeyError(f"Erro ao acessar coluna no DataFrame: {e}")
+    except ValueError as e:
+        raise ValueError(f"Erro de valor: {e}")
+    except Exception as e:
+        raise RuntimeError(f"Erro ao criar {e}")
